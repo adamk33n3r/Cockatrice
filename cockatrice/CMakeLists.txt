@@ -200,7 +200,11 @@ FIND_PACKAGE(Protobuf REQUIRED)
 FIND_PACKAGE(Threads)
 
 set(CMAKE_CXX_FLAGS_DEBUG "-ggdb -O0")
-set(CMAKE_CXX_FLAGS_RELEASE "-s -O2")
+if (APPLE)
+  set(CMAKE_CXX_FLAGS_RELEASE "-O2")
+else (APPLE)
+  set(CMAKE_CXX_FLAGS_RELEASE "-s -O2")
+ENDIF (APPLE)
 
 # paths
 set(ICONDIR share/icons CACHE STRING "icon dir")
